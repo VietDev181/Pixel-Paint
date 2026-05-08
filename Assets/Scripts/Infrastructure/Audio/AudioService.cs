@@ -26,10 +26,15 @@ public class AudioService : MonoBehaviour, IAudioService
     [Header("Mixer")]
     [SerializeField] private AudioMixer mixer;
 
-    private void Awake()
+    private void Start()
     {
-        SetBGMVolume(GetBGMVolume());
-        SetSFXVolume(GetSFXVolume());
+        ApplyVolume(BgmMixerParam, GetBGMVolume());
+        ApplyVolume(SfxMixerParam, GetSFXVolume());
+    }
+
+    private void ApplyVolume(string param, float value)
+    {
+        if (mixer != null) mixer.SetFloat(param, LinearToDb(value));
     }
 
     public void PlayClickSFX() => PlaySFX(clickClip);

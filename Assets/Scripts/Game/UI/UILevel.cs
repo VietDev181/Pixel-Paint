@@ -97,21 +97,18 @@ public class UILevel : MonoBehaviour
     private void OnOpenSetting()
     {
         audioService.PlayClickSFX();
-        Time.timeScale = 0f;
         ShowPanel(settingPanel);
     }
 
     private void OnAskReset()
     {
         audioService.PlayClickSFX();
-        Time.timeScale = 0f;
         ShowPanel(resetPanel);
     }
 
     private void OnClosePanels()
     {
         audioService.PlayClickSFX();
-        Time.timeScale = 1f;
         HidePanel(settingPanel);
         HidePanel(resetPanel);
     }
@@ -119,7 +116,6 @@ public class UILevel : MonoBehaviour
     private void OnConfirmReset()
     {
         audioService.PlayClickSFX();
-        Time.timeScale = 1f;
         progress.Reset();
         sceneService.ReloadCurrentScene();
     }
